@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-offwhite text-dark font-sans overflow-x-hidden antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-wide text-wine-700;
+  }
+}
+
+@layer utilities {
+  .editorial-border {
+    @apply border border-wine-700/20;
+  }
+  
+  .luxury-button {
+    @apply border border-wine-700 text-wine-700 px-8 py-3 uppercase tracking-widest text-xs hover:bg-wine-700 hover:text-offwhite transition-all duration-300;
+  }
+  
+  .luxury-button-solid {
+    @apply bg-wine-700 text-offwhite border border-wine-700 px-8 py-3 uppercase tracking-widest text-xs hover:bg-wine-800 transition-all duration-300;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+  
+  .glass-dark {
+    @apply bg-black/10 backdrop-blur-md border border-white/10 shadow-xl;
+  }
+
+  .snap-x-mandatory {
+    scroll-snap-type: x mandatory;
+  }
+
+  .snap-start-center {
+    scroll-snap-align: start;
+  }
+}
