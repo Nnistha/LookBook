@@ -13,24 +13,46 @@ const aiRoutes = require('./routes/ai');
 
 const app = express();
 
-app.use(cors());
+
+// ✅ CORS FIX (IMPORTANT)
+app.use(cors({
+  origin: "*",   // allow all (easy for now)
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
+
 app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ limit: '100mb', extended: true }));
 
-// Ping route for diagnostics
-app.get('/api/ping', (req, res) => res.json({ status: 'ok', time: new Date() }));
 
-// Routes
+// ✅ Test route (check backend is working)
+app.get('/', (req, res) => {
+  res.send("Backend is running 🚀");
+});
+
+app.get('/api/ping', (req, res) => {
+  res.json({ status: 'ok', time: new Date() });
+});
+
+
+// ✅ Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/wardrobe', wardrobeRoutes);
 app.use('/api/outfits', outfitRoutes);
 app.use('/api/calendar', calendarRoutes);
 app.use('/api/ai', aiRoutes);
 
-// Database connection
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/lookbook')
+
+// ✅ Database connection
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
+
+// ✅ PORT FIX (Render uses this)
 const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
