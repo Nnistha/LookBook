@@ -74,7 +74,7 @@ export default function Wardrobe() {
 
   const fetchOutfits = async () => {
     try {
-      const res = await fetch('http://localhost:5001/api/outfits', {
+      const res = await fetch('https://lookbook-iwfd.onrender.com/api/outfits', {
         headers: getAuthHeader()
       });
       if (res.ok) {
@@ -87,7 +87,7 @@ export default function Wardrobe() {
 
   const fetchItems = async () => {
     try {
-      const res = await fetch('http://localhost:5001/api/wardrobe', {
+      const res = await fetch('https://lookbook-iwfd.onrender.com/api/wardrobe', {
         headers: getAuthHeader()
       });
       if (res.ok) {
@@ -115,7 +115,7 @@ export default function Wardrobe() {
     
     setIsSaving(true);
     try {
-      const res = await fetch('http://localhost:5001/api/wardrobe', {
+      const res = await fetch('https://lookbook-iwfd.onrender.com/api/wardrobe', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -152,7 +152,7 @@ export default function Wardrobe() {
     if (!selectedItem) return;
     setIsSaving(true);
     try {
-      const res = await fetch(`http://localhost:5001/api/wardrobe/${selectedItem._id}`, {
+      const res = await fetch(`https://lookbook-iwfd.onrender.com/api/wardrobe/${selectedItem._id}`, {
         method: 'PATCH',
         headers: { 
           'Content-Type': 'application/json',
@@ -178,7 +178,7 @@ export default function Wardrobe() {
     if (e) e.stopPropagation();
     const item = items.find(i => i._id === id);
     try {
-      const res = await fetch(`http://localhost:5001/api/wardrobe/${id}`, {
+      const res = await fetch(`https://lookbook-iwfd.onrender.com/api/wardrobe/${id}`, {
         method: 'PATCH',
         headers: { 
           'Content-Type': 'application/json',
@@ -198,7 +198,7 @@ export default function Wardrobe() {
 
   const deleteItem = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5001/api/wardrobe/${id}`, {
+      const res = await fetch(`https://lookbook-iwfd.onrender.com/api/wardrobe/${id}`, {
         method: 'DELETE',
         headers: getAuthHeader()
       });
@@ -214,7 +214,7 @@ export default function Wardrobe() {
   const deleteOutfit = async (id) => {
     if (!confirm('Delete this look from your archive?')) return;
     try {
-      const res = await fetch(`http://localhost:5001/api/outfits/${id}`, {
+      const res = await fetch(`https://lookbook-iwfd.onrender.com/api/outfits/${id}`, {
         method: 'DELETE',
         headers: getAuthHeader()
       });
@@ -237,7 +237,7 @@ export default function Wardrobe() {
     }
 
     try {
-      const res = await fetch(`http://localhost:5001/api/outfits/${id}`, {
+      const res = await fetch(`https://lookbook-iwfd.onrender.com/api/outfits/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify(updates)
@@ -253,7 +253,7 @@ export default function Wardrobe() {
 
   const handleScheduleOutfit = async (outfitId, date, event) => {
     try {
-      const res = await fetch('http://localhost:5001/api/calendar', {
+      const res = await fetch('https://lookbook-iwfd.onrender.com/api/calendar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify({ outfitId, date, event })
@@ -268,7 +268,7 @@ export default function Wardrobe() {
 
   const handlePostOutfit = async (outfitId, caption) => {
     try {
-      const res = await fetch(`http://localhost:5001/api/outfits/${outfitId}/post`, {
+      const res = await fetch(`https://lookbook-iwfd.onrender.com/api/outfits/${outfitId}/post`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify({ caption })

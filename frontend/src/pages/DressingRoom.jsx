@@ -74,8 +74,8 @@ export default function DressingRoom() {
   const fetchData = async () => {
     try {
       const [wardrobeRes, outfitsRes] = await Promise.all([
-        fetch('http://localhost:5001/api/wardrobe', { headers: getAuthHeader() }),
-        fetch('http://localhost:5001/api/outfits', { headers: getAuthHeader() })
+        fetch('https://lookbook-iwfd.onrender.com/api/wardrobe', { headers: getAuthHeader() }),
+        fetch('https://lookbook-iwfd.onrender.com/api/outfits', { headers: getAuthHeader() })
       ]);
       if (wardrobeRes.ok) setWardrobe(await wardrobeRes.json());
       if (outfitsRes.ok) setOutfits(await outfitsRes.json());
@@ -157,8 +157,8 @@ export default function DressingRoom() {
       };
 
       const url = editingOutfitId 
-        ? `http://localhost:5001/api/outfits/${editingOutfitId}`
-        : 'http://localhost:5001/api/outfits';
+        ? `https://lookbook-iwfd.onrender.com/api/outfits/${editingOutfitId}`
+        : 'https://lookbook-iwfd.onrender.com/api/outfits';
       
       const method = editingOutfitId ? 'PUT' : 'POST';
 
@@ -205,7 +205,7 @@ export default function DressingRoom() {
   const deleteOutfit = async (id) => {
     if (!confirm('Permanently remove this look?')) return;
     try {
-      const res = await fetch(`http://localhost:5001/api/outfits/${id}`, {
+      const res = await fetch(`https://lookbook-iwfd.onrender.com/api/outfits/${id}`, {
         method: 'DELETE',
         headers: getAuthHeader()
       });
@@ -227,7 +227,7 @@ export default function DressingRoom() {
     }
 
     try {
-      const res = await fetch(`http://localhost:5001/api/outfits/${id}`, {
+      const res = await fetch(`https://lookbook-iwfd.onrender.com/api/outfits/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify(updates)
@@ -244,7 +244,7 @@ export default function DressingRoom() {
 
   const handleScheduleOutfit = async (outfitId, date, event) => {
     try {
-      const res = await fetch('http://localhost:5001/api/calendar', {
+      const res = await fetch('https://lookbook-iwfd.onrender.com/api/calendar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify({ outfitId, date, event })
@@ -259,7 +259,7 @@ export default function DressingRoom() {
 
   const handlePostOutfit = async (outfitId, caption) => {
     try {
-      const res = await fetch(`http://localhost:5001/api/outfits/${outfitId}/post`, {
+      const res = await fetch(`hhttps://lookbook-iwfd.onrender.com/api/outfits/${outfitId}/post`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify({ caption, isPosted: true })

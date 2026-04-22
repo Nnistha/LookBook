@@ -173,8 +173,8 @@ export default function Landing({ toggleSidebar }) {
     try {
       const todayKey = getTodayKey();
       const [savedRes, calendarRes] = await Promise.all([
-        fetch('http://lookbook-iwfd.onrender.com/api/outfits', { headers: getAuthHeader() }),
-        fetch('http://lookbook-iwfd.onrender.com/api/calendar', { headers: getAuthHeader() })
+        fetch('https://lookbook-iwfd.onrender.com/api/outfits', { headers: getAuthHeader() }),
+        fetch('https://lookbook-iwfd.onrender.com/api/calendar', { headers: getAuthHeader() })
       ]);
 
       let saved = [];
@@ -205,7 +205,7 @@ export default function Landing({ toggleSidebar }) {
   const deleteOutfit = async (id) => {
     if (!confirm('Permanently remove this look?')) return;
     try {
-      const res = await fetch(`http://localhost:5001/api/outfits/${id}`, {
+      const res = await fetch(`https://lookbook-iwfd.onrender.com/api/outfits/${id}`, {
         method: 'DELETE',
         headers: getAuthHeader()
       });
@@ -232,7 +232,7 @@ export default function Landing({ toggleSidebar }) {
     }
 
     try {
-      const res = await fetch(`http://localhost:5001/api/outfits/${id}`, {
+      const res = await fetch(`https://lookbook-iwfd.onrender.com/api/outfits/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify(updates)
@@ -252,7 +252,7 @@ export default function Landing({ toggleSidebar }) {
 
   const handleScheduleOutfit = async (outfitId, date, event) => {
     try {
-      const res = await fetch('http://localhost:5001/api/calendar', {
+      const res = await fetch('https://lookbook-iwfd.onrender.com/api/calendar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify({ outfitId, date, event })

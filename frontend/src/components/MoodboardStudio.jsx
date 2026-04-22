@@ -318,7 +318,7 @@ export default function MoodboardStudio({ items }) {
     try {
       const savedBoard = await handleSaveBoard(false);
       const token = getAuthToken();
-      const res = await fetch('http://localhost:5001/api/calendar', {
+      const res = await fetch('https://lookbook-iwfd.onrender.com/api/calendar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

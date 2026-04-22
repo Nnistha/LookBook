@@ -30,7 +30,7 @@ export default function SocialProfile() {
 
   const fetchPostedOutfits = async () => {
     try {
-      const res = await fetch('http://localhost:5001/api/outfits/posted');
+      const res = await fetch('https://lookbook-iwfd.onrender.com/api/outfits/posted');
       if (res.ok) {
         const data = await res.json();
         setPostedOutfits(data);

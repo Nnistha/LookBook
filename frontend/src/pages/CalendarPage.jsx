@@ -53,7 +53,7 @@ export default function CalendarPage() {
 
   const fetchSchedule = async () => {
     try {
-      const res = await fetch('http://localhost:5001/api/calendar', {
+      const res = await fetch('https://lookbook-iwfd.onrender.com/api/calendar', {
         headers: getAuthHeader()
       });
 
@@ -83,7 +83,7 @@ export default function CalendarPage() {
 
   const fetchOutfits = async () => {
     try {
-      const res = await fetch('http://localhost:5001/api/outfits', {
+      const res = await fetch('https://lookbook-iwfd.onrender.com/api/outfits', {
         headers: getAuthHeader()
       });
 
@@ -134,7 +134,7 @@ export default function CalendarPage() {
     if (!selectedEntry) return;
 
     try {
-      const res = await fetch(`http://localhost:5001/api/calendar/${selectedEntry.date}`, {
+      const res = await fetch(`https://lookbook-iwfd.onrender.com/api/calendar/${selectedEntry.date}`, {
         method: 'DELETE',
         headers: getAuthHeader()
       });
@@ -156,7 +156,7 @@ export default function CalendarPage() {
     if (!selectedEntry || !rescheduleDate) return;
 
     try {
-      const res = await fetch('http://localhost:5001/api/calendar', {
+      const res = await fetch('https://lookbook-iwfd.onrender.com/api/calendar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify({
@@ -214,7 +214,7 @@ export default function CalendarPage() {
           ? savedBoards.find((board) => board.id === selectedMoodboardId) || null
           : null;
 
-      const res = await fetch('http://localhost:5001/api/calendar', {
+      const res = await fetch('https://lookbook-iwfd.onrender.com/api/calendar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify({
@@ -448,7 +448,7 @@ export default function CalendarPage() {
                         <button
                           onClick={async () => {
                             try {
-                              const res = await fetch(`http://localhost:5001/api/calendar/${drawerEntry.date}`, {
+                              const res = await fetch(`https://lookbook-iwfd.onrender.com/api/calendar/${drawerEntry.date}`, {
                                 method: 'DELETE',
                                 headers: getAuthHeader()
                               });

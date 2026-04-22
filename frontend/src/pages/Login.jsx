@@ -15,7 +15,7 @@ export default function Login() {
     
     try {
       const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
-      const res = await fetch(`http://localhost:5001${endpoint}`, {
+      const res = await fetch(`https://lookbook-iwfd.onrender.com${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
