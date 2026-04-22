@@ -14,21 +14,21 @@ const aiRoutes = require('./routes/ai');
 const app = express();
 
 
-// ✅ CORS FIX (IMPORTANT)
+
 app.use(cors({
-  origin: "*",   // allow all (easy for now)
+  origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
 }));
+
 
 
 app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ limit: '100mb', extended: true }));
 
 
-// ✅ Test route (check backend is working)
+
 app.get('/', (req, res) => {
-  res.send("Backend is running 🚀");
+  res.send("API is running 🚀");
 });
 
 app.get('/api/ping', (req, res) => {
@@ -36,7 +36,7 @@ app.get('/api/ping', (req, res) => {
 });
 
 
-// ✅ Routes
+
 app.use('/api/auth', authRoutes);
 app.use('/api/wardrobe', wardrobeRoutes);
 app.use('/api/outfits', outfitRoutes);
@@ -44,13 +44,13 @@ app.use('/api/calendar', calendarRoutes);
 app.use('/api/ai', aiRoutes);
 
 
-// ✅ Database connection
+
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
 
-// ✅ PORT FIX (Render uses this)
+
 const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
