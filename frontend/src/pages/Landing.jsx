@@ -173,8 +173,8 @@ export default function Landing({ toggleSidebar }) {
     try {
       const todayKey = getTodayKey();
       const [savedRes, calendarRes] = await Promise.all([
-        fetch('http://localhost:5001/api/outfits', { headers: getAuthHeader() }),
-        fetch('http://localhost:5001/api/calendar', { headers: getAuthHeader() })
+        fetch('http://lookbook-iwfd.onrender.com/api/outfits', { headers: getAuthHeader() }),
+        fetch('http://lookbook-iwfd.onrender.com/api/calendar', { headers: getAuthHeader() })
       ]);
 
       let saved = [];
